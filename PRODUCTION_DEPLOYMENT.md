@@ -286,7 +286,7 @@ chmod +x /etc/cron.daily/nutriflow-backup
 - Check logs first: `docker-compose logs`
 - Review this documentation
 - Check nginx-proxy-manager documentation
-- Contact: hello@nutriflow.fr
+- Contact: contact@nutri-flow.me
 
 ### Maintenance Schedule
 - **Daily**: Automated backups

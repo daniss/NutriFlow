@@ -6,6 +6,7 @@ export default function LandingPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
   const [messageType, setMessageType] = useState<'success' | 'error'>('success');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -88,14 +89,25 @@ export default function LandingPage() {
               <span className="font-semibold text-gray-900 tracking-tight">NutriFlow</span>
             </div>
             
-            <div className="flex items-center space-x-6">
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-6">
               <a href="#features" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">Fonctionnalités</a>
               <a href="#why-us" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">Pourquoi nous</a>
               <button 
-                onClick={() => document.querySelector('#main-signup-form')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 className="text-sm bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white px-4 py-2 rounded-full hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 Réserver mon accès gratuit
+              </button>
+            </div>
+
+            {/* Mobile Navigation - CTA Button Only */}
+            <div className="md:hidden">
+              <button 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="text-xs bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white px-3 py-2 rounded-full hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 transition-all duration-200 shadow-lg"
+              >
+                Accès gratuit
               </button>
             </div>
           </div>
@@ -886,7 +898,7 @@ export default function LandingPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
-                href="mailto:hello@nutriflow.fr?subject=Mes besoins de diététicien"
+                href="mailto:contact@nutri-flow.me?subject=Mes besoins de diététicien"
                 className="inline-flex items-center px-6 py-3 bg-white text-gray-900 border border-gray-300 rounded-2xl font-medium hover:bg-gray-50 transition-colors shadow-sm"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1195,7 +1207,7 @@ export default function LandingPage() {
               Vous avez une idée ? Partagez-la avec nous !
             </p>
             <a 
-              href="mailto:hello@nutriflow.fr" 
+              href="mailto:contact@nutri-flow.me" 
               className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-2xl hover:from-emerald-600 hover:to-teal-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1448,7 +1460,7 @@ export default function LandingPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
-                href="mailto:hello@nutriflow.fr"
+                href="mailto:contact@nutri-flow.me"
                 className="inline-flex items-center px-6 py-3 bg-white text-gray-900 border border-gray-300 rounded-2xl font-medium hover:bg-gray-50 transition-colors"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1504,7 +1516,7 @@ export default function LandingPage() {
             <div>
               <h4 className="text-sm font-semibold text-gray-900 mb-4">Support</h4>
               <ul className="space-y-3 text-sm text-gray-600">
-                <li><a href="mailto:hello@nutriflow.fr" className="hover:text-gray-900 transition-colors">Contact</a></li>
+                <li><a href="mailto:contact@nutri-flow.me" className="hover:text-gray-900 transition-colors">Contact</a></li>
               </ul>
             </div>
           </div>
@@ -1524,10 +1536,10 @@ export default function LandingPage() {
               </div>
               
               <div className="flex items-center space-x-6 text-sm text-gray-500">
-                <a href="#" className="hover:text-gray-900 transition-colors">Mentions légales</a>
-                <a href="#" className="hover:text-gray-900 transition-colors">Politique de confidentialité</a>
-                <a href="#" className="hover:text-gray-900 transition-colors">CGU</a>
-                <a href="#" className="hover:text-gray-900 transition-colors">CGV</a>
+                <a href="/mentions-legales" className="hover:text-gray-900 transition-colors">Mentions légales</a>
+                <a href="/politique-confidentialite" className="hover:text-gray-900 transition-colors">Politique de confidentialité</a>
+                <a href="/cgu" className="hover:text-gray-900 transition-colors">CGU</a>
+                <a href="/cgv" className="hover:text-gray-900 transition-colors">CGV</a>
               </div>
             </div>
           </div>
