@@ -80,6 +80,12 @@ async def subscribe(
     request.state.request_id = request_id
     
     try:
+        # Log all request details for debugging
+        logger.info(f"[{request_id}] Subscribe request from {client_ip}")
+        logger.info(f"[{request_id}] Headers: {dict(request.headers)}")
+        logger.info(f"[{request_id}] Email: {subscriber_data.email}")
+        logger.info(f"[{request_id}] Method: {request.method}, Path: {request.url.path}")
+        
         # Validate request headers and format
         if not validate_request_headers(request):
             logger.warning(f"[{request_id}] Invalid headers from {client_ip}")

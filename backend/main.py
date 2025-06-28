@@ -81,8 +81,12 @@ async def startup_event():
     logger.info("Database tables created/verified")
 
 @app.get("/")
-async def root():
+async def root(request: Request):
     """Root endpoint with minimal information"""
+    from security import get_client_ip
+    client_ip = get_client_ip(request)
+    logger.info(f"Root endpoint accessed from {client_ip} - Headers: {dict(request.headers)}")
+    
     return {
         "message": "NutriFlow API",
         "version": settings.VERSION,
@@ -90,8 +94,12 @@ async def root():
     }
 
 @app.get("/health")
-async def health_check():
+async def health_check(request: Request):
     """Health check endpoint for monitoring"""
+    from security import get_client_ip
+    client_ip = get_client_ip(request)
+    logger.info(f"Health check from {client_ip} - Headers: {dict(request.headers)}")
+    
     return {"status": "healthy", "message": "API is running"}
 
 if __name__ == "__main__":

@@ -130,29 +130,62 @@ def get_client_ip(request: Request) -> str:
 
 def validate_request_headers(request: Request) -> bool:
     """Validate request headers for security"""
+    client_ip = get_client_ip(request)
+    
+    # Log all request details for debugging
+    logger.info(f"Header validation for {client_ip} - Method: {request.method}, Path: {request.url.path}")
+    logger.info(f"Headers: {dict(request.headers)}")
+    
     # Check Content-Type for POST requests
     if request.method == "POST":
         content_type = request.headers.get("Content-Type", "")
+        logger.info(f"Content-Type: '{content_type}' for POST request from {client_ip}")
         if not content_type.startswith("application/json"):
+            logger.warning(f"Invalid Content-Type '{content_type}' from {client_ip}")
             return False
     
     # Check for suspicious headers
     user_agent = request.headers.get("User-Agent", "")
+    logger.info(f"User-Agent: '{user_agent}' from {client_ip}")
+    
     if not user_agent or len(user_agent) < 10:
+        logger.warning(f"Missing or short User-Agent from {client_ip}: '{user_agent}'")
         return False
     
-    # Block common bot patterns
+    # Block common bot patterns (but allow nginx-proxy-manager)
     suspicious_patterns = [
         r"bot|crawler|spider|scraper",
         r"curl|wget|python-requests",
         r"test|scanner|vulnerability"
     ]
     
-    for pattern in suspicious_patterns:
-        if re.search(pattern, user_agent, re.IGNORECASE):
-            if not settings.DEBUG:  # Allow in development
-                return False
+    # Allow nginx-proxy-manager and other legitimate proxies
+    legitimate_proxies = [
+        r"nginx",
+        r"proxy",
+        r"Mozilla",  # Real browsers
+        r"Chrome",
+        r"Firefox",
+        r"Safari",
+        r"Edge"
+    ]
     
+    # Check if it's a legitimate proxy first
+    is_legitimate = False
+    for pattern in legitimate_proxies:
+        if re.search(pattern, user_agent, re.IGNORECASE):
+            is_legitimate = True
+            logger.info(f"Legitimate proxy/browser detected: {user_agent}")
+            break
+    
+    if not is_legitimate:
+        for pattern in suspicious_patterns:
+            if re.search(pattern, user_agent, re.IGNORECASE):
+                if not settings.DEBUG:  # Allow in development
+                    logger.warning(f"Suspicious User-Agent blocked from {client_ip}: '{user_agent}'")
+                    return False
+    
+    logger.info(f"Header validation passed for {client_ip}")
     return True
 
 async def rate_limit_middleware(request: Request, call_next):
