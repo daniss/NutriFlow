@@ -1,6 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.trustedhost import TrustedHostMiddleware
+from fastapi.responses import JSONResponse
 import logging
+import sys
 
 from config import settings
 from database import create_tables
@@ -8,48 +11,78 @@ from api import router
 from security import rate_limit_middleware, security_headers_middleware
 
 # Configure logging
+log_level = logging.INFO if settings.DEBUG else logging.WARNING
 logging.basicConfig(
-    level=logging.INFO if settings.DEBUG else logging.WARNING,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    level=log_level,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.StreamHandler(sys.stdout),
+    ] if settings.is_production else [logging.StreamHandler()]
 )
 
 logger = logging.getLogger(__name__)
 
-# Create FastAPI app
+# Create FastAPI app with production-safe settings
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
     debug=settings.DEBUG,
-    docs_url="/docs" if settings.DEBUG else None,
-    redoc_url="/redoc" if settings.DEBUG else None,
+    docs_url=settings.docs_url,
+    redoc_url=settings.redoc_url,
+    # Hide server info in production
+    openapi_url="/openapi.json" if not settings.is_production else None,
 )
 
 # Add security middlewares (order matters!)
+if settings.is_production:
+    # Trusted host middleware for production
+    app.add_middleware(
+        TrustedHostMiddleware, 
+        allowed_hosts=["*.nutriflow.fr", "nutriflow.fr", "localhost"]
+    )
+
 app.middleware("http")(security_headers_middleware)
 app.middleware("http")(rate_limit_middleware)
 
-# Add CORS middleware
+# Add CORS middleware with restrictive settings
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.ALLOWED_ORIGINS,
-    allow_credentials=False,  # Set to False for security
-    allow_methods=["GET", "POST"],
-    allow_headers=["Content-Type", "Accept", "Origin", "User-Agent"],  # Restrict headers
+    allow_credentials=False,  # Security: Keep false unless needed
+    allow_methods=["GET", "POST", "OPTIONS"],  # Only needed methods
+    allow_headers=["Content-Type", "Accept", "Origin", "User-Agent", "X-Requested-With"],
+    expose_headers=["X-Request-ID"],  # For request tracking
 )
 
 # Include API routes
 app.include_router(router, prefix=settings.API_PREFIX)
 
+# Global exception handler for production
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    """Global exception handler to prevent information leakage"""
+    if settings.is_production:
+        logger.error(f"Unhandled exception: {str(exc)}", exc_info=True)
+        return JSONResponse(
+            status_code=500,
+            content={"detail": "Internal server error"}
+        )
+    else:
+        # In development, show detailed errors
+        raise exc
+
 @app.on_event("startup")
 async def startup_event():
     """Create database tables on startup"""
-    logger.info("Starting NutriFlow API...")
+    logger.info(f"Starting NutriFlow API v{settings.VERSION}...")
+    logger.info(f"Environment: {settings.ENVIRONMENT}")
+    logger.info(f"Debug mode: {settings.DEBUG}")
     create_tables()
     logger.info("Database tables created/verified")
 
 @app.get("/")
 async def root():
-    """Root endpoint"""
+    """Root endpoint with minimal information"""
     return {
         "message": "NutriFlow API",
         "version": settings.VERSION,
@@ -58,7 +91,7 @@ async def root():
 
 @app.get("/health")
 async def health_check():
-    """Health check endpoint"""
+    """Health check endpoint for monitoring"""
     return {"status": "healthy", "message": "API is running"}
 
 if __name__ == "__main__":
@@ -67,5 +100,6 @@ if __name__ == "__main__":
         "main:app",
         host="0.0.0.0",
         port=8000,
-        reload=settings.DEBUG
+        reload=settings.DEBUG and not settings.is_production,
+        access_log=settings.DEBUG
     )
