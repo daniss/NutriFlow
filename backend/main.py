@@ -38,7 +38,7 @@ if settings.is_production:
     # Trusted host middleware for production
     app.add_middleware(
         TrustedHostMiddleware, 
-        allowed_hosts=["*.nutriflow.fr", "nutriflow.fr", "localhost"]
+        allowed_hosts=["*.nutri-flow.me", "nutri-flow.me", "localhost"]
     )
 
 app.middleware("http")(security_headers_middleware)
@@ -47,7 +47,7 @@ app.middleware("http")(rate_limit_middleware)
 # Add CORS middleware with restrictive settings
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.ALLOWED_ORIGINS,
+    allow_origins=settings.ALLOWED_ORIGINS.split(","),
     allow_credentials=False,  # Security: Keep false unless needed
     allow_methods=["GET", "POST", "OPTIONS"],  # Only needed methods
     allow_headers=["Content-Type", "Accept", "Origin", "User-Agent", "X-Requested-With"],
