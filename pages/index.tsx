@@ -272,7 +272,7 @@ export default function LandingPage() {
                   <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
                   <div className="w-3 h-3 bg-green-400 rounded-full"></div>
                 </div>
-                <div className="text-gray-600 text-sm font-medium">nutri-flow.fr/dashboard</div>
+                <div className="text-gray-600 text-sm font-medium">nutri-flow.me/dashboard</div>
                 <div className="w-20"></div>
               </div>
               
