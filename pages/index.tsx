@@ -72,10 +72,10 @@ export default function LandingPage() {
   return (
     <>
       <Head>
-        <title>NutriFlow - Logiciel IA pour diététiciens | Liste d'attente</title>
+        <title>NutriFlow - Logiciel complet pour diététiciens | Plans, suivi, facturation</title>
         <meta name="description" content="Rejoignez +150 diététiciens en liste d'attente. Plans IA, suivi patients, facturation automatisée. Lancement septembre 2025. 14 jours gratuits garantis." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#3b82f6" />
+        <meta name="theme-color" content="#10b981" />
       </Head>
 
       {/* Navigation */}
@@ -83,7 +83,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">N</span>
               </div>
               <span className="font-semibold text-gray-900 tracking-tight">NutriFlow</span>
@@ -95,7 +95,7 @@ export default function LandingPage() {
               <a href="#why-us" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">Pourquoi nous</a>
               <button 
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="text-sm bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white px-4 py-2 rounded-full hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="text-sm bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-4 py-2 rounded-full hover:from-emerald-600 hover:to-teal-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 Réserver mon accès gratuit
               </button>
@@ -105,7 +105,7 @@ export default function LandingPage() {
             <div className="md:hidden">
               <button 
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="text-xs bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white px-3 py-2 rounded-full hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 transition-all duration-200 shadow-lg"
+                className="text-xs bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-3 py-2 rounded-full hover:from-emerald-600 hover:to-teal-700 transition-all duration-200 shadow-lg"
               >
                 Accès gratuit
               </button>
@@ -118,13 +118,13 @@ export default function LandingPage() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
         {/* Modern gradient background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/50 to-indigo-50/30"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-50/20"></div>
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
           
           {/* Animated orbs */}
-          <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-          <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
-          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+          <div className="absolute top-0 -left-4 w-72 h-72 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+          <div className="absolute top-0 -right-4 w-72 h-72 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-cyan-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
         </div>
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -139,7 +139,7 @@ export default function LandingPage() {
           {/* Main headline */}
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-8 leading-none tracking-tight">
             Plans IA + Suivi patients +
-            <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent">
               Facturation automatisée
             </span>
           </h1>
@@ -179,7 +179,7 @@ export default function LandingPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="h-14 px-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white rounded-2xl font-semibold hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 whitespace-nowrap shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center min-w-fit"
+                className="h-14 px-6 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-2xl font-semibold hover:from-emerald-600 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 whitespace-nowrap shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center min-w-fit"
               >
                 {isSubmitting ? 'En cours...' : 'Réserver ma place (37 restantes)'}
               </button>
@@ -252,7 +252,7 @@ export default function LandingPage() {
             </div>
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
               Un aperçu de votre
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-600">
                 tableau de bord
               </span>
             </h2>
@@ -498,7 +498,7 @@ export default function LandingPage() {
             </div>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
               Tout ce dont vous avez
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-600">
                 vraiment besoin
               </span>
             </h2>
@@ -656,7 +656,7 @@ export default function LandingPage() {
                 </div>
                 <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                   Conçu par des diététiciens,
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-600">
                     pour des diététiciens
                   </span>
                 </h2>
@@ -753,7 +753,7 @@ export default function LandingPage() {
                 {/* Main container */}
                 <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden">
                   {/* Header */}
-                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-4 flex items-center justify-between">
+                  <div className="bg-gradient-to-r from-emerald-500 to-teal-600 px-6 py-4 flex items-center justify-between">
                     <div className="flex items-center space-x-3">
                       <div className="w-3 h-3 bg-white/30 rounded-full"></div>
                       <div className="w-3 h-3 bg-white/30 rounded-full"></div>
@@ -909,7 +909,7 @@ export default function LandingPage() {
               <span className="text-gray-400 text-sm">ou</span>
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="px-6 py-3 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white rounded-2xl font-medium hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-2xl font-medium hover:from-emerald-600 hover:to-teal-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 Rejoindre la liste
               </button>
@@ -1249,11 +1249,11 @@ export default function LandingPage() {
             Votre accès prioritaire vous attend.
           </p>
           
-          {/* CTA Button - Scroll to Main Form */}
+          {/* CTA Button - Scroll to Top */}
           <div className="mb-12">
             <button
-              onClick={() => document.querySelector('#main-signup-form')?.scrollIntoView({ behavior: 'smooth' })}
-              className="h-14 px-8 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white rounded-2xl font-semibold hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="h-14 px-8 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-2xl font-semibold hover:from-emerald-600 hover:to-teal-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               ⬆️ Réserver mon accès gratuit
             </button>
@@ -1332,22 +1332,22 @@ export default function LandingPage() {
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               Créé par un passionné de nutrition et sport, 
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-600">
                 qui comprend vos nécessités
               </span>
             </h2>
           </div>
           
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 lg:p-12 rounded-3xl border border-blue-100">
+          <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-8 lg:p-12 rounded-3xl border border-emerald-100">
             <div className="flex flex-col lg:flex-row items-center gap-8">
               <div className="flex-shrink-0">
-                <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-white text-4xl font-bold shadow-lg">
+                <div className="w-32 h-32 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center text-white text-4xl font-bold shadow-lg">
                   D
                 </div>
               </div>
               <div className="flex-1 text-center lg:text-left">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Danis</h3>
-                <p className="text-blue-600 font-medium mb-4">Développeur & Sportif</p>
+                <p className="text-emerald-600 font-medium mb-4">Développeur & Sportif</p>
                 <p className="text-gray-600 leading-relaxed mb-6">
                     Je suis simplement passionné de nutrition et sportif. NutriFlow est né de l'envie de créer un outil moderne, simple et utile pour les diététiciens indépendants.
                 </p>
@@ -1382,7 +1382,7 @@ export default function LandingPage() {
             </div>
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
               Vous avez des
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-600">
                 questions ?
               </span>
             </h2>
@@ -1480,7 +1480,7 @@ export default function LandingPage() {
             {/* Logo & Description */}
             <div className="lg:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg">
                   <span className="text-white font-bold">N</span>
                 </div>
                 <span className="text-xl font-bold text-gray-900 tracking-tight">NutriFlow</span>
@@ -1495,7 +1495,7 @@ export default function LandingPage() {
                 <h4 className="text-sm font-semibold text-gray-900 mb-3">Rejoignez la liste d'accès anticipé</h4>
                 <button
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  className="w-full h-10 px-4 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white rounded-xl text-sm font-medium hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 transition-all duration-200 shadow-lg"
+                  className="w-full h-10 px-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-xl text-sm font-medium hover:from-emerald-600 hover:to-teal-700 transition-all duration-200 shadow-lg"
                 >
                   ⬆️ Inscription en haut de page
                 </button>
