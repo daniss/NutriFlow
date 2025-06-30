@@ -7,6 +7,7 @@ export default function LandingPage() {
   const [submitMessage, setSubmitMessage] = useState('');
   const [messageType, setMessageType] = useState<'success' | 'error'>('success');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isImageZoomed, setIsImageZoomed] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -151,7 +152,7 @@ export default function LandingPage() {
           </p>
           
           {/* AI Capability Example */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 mb-12 max-w-3xl mx-auto border border-gray-200 shadow-sm">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 mb-8 max-w-3xl mx-auto border border-gray-200 shadow-sm">
             <div className="text-center">
               <div className="text-sm text-gray-600 mb-2">L'IA NutriFlow peut traiter :</div>
               <div className="text-lg font-semibold text-gray-900 mb-2">
@@ -159,6 +160,40 @@ export default function LandingPage() {
               </div>
               <div className="text-sm text-blue-600 font-medium">
                 → Plan 7 jours avec courses optimisées en moins de 2 minutes
+              </div>
+            </div>
+          </div>
+
+          {/* AI Generation Proof - Compact Screenshot */}
+          <div className="mb-12 max-w-4xl mx-auto">
+            <div className="text-center mb-4">
+              <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+                ✨ Aperçu de l'interface
+              </div>
+            </div>
+            <div 
+              className="relative bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden cursor-pointer hover:shadow-2xl transition-shadow duration-300 group"
+              onClick={() => setIsImageZoomed(true)}
+            >
+              <img 
+                src="/ai-generation-proof.jpg" 
+                alt="Interface NutriFlow - Génération automatique de plans nutritionnels personnalisés"
+                className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
+                style={{ maxHeight: '400px', objectFit: 'cover' }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 border border-gray-200">
+                  <div className="text-sm font-semibold text-gray-900 mb-1">Plan personnalisé généré</div>
+                  <div className="text-xs text-gray-600">Bodybuilder • 3500 kcal • 230g protéines • 7 jours</div>
+                </div>
+              </div>
+              {/* Click to zoom indicator */}
+              <div className="absolute top-4 right-4 bg-black/60 text-white px-2 py-1 rounded-lg text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <svg className="w-3 h-3 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                </svg>
+                Cliquer pour agrandir
               </div>
             </div>
           </div>
@@ -1545,6 +1580,39 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+
+      {/* Image Zoom Modal */}
+      {isImageZoomed && (
+        <div 
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          onClick={() => setIsImageZoomed(false)}
+        >
+          <div className="relative max-w-7xl max-h-full">
+            {/* Close button */}
+            <button
+              onClick={() => setIsImageZoomed(false)}
+              className="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/30 text-white rounded-full p-2 transition-colors duration-200"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            {/* Zoomed image */}
+            <img 
+              src="/ai-generation-proof.jpg" 
+              alt="Interface NutriFlow - Génération automatique de plans nutritionnels personnalisés"
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+            
+            {/* Instructions */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 text-white px-4 py-2 rounded-lg text-sm">
+              Cliquez à l'extérieur ou sur ✕ pour fermer
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
