@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 
 export default function LandingPage() {
@@ -94,6 +94,7 @@ export default function LandingPage() {
             <div className="hidden md:flex items-center space-x-6">
               <a href="#features" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">Fonctionnalités</a>
               <a href="#why-us" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">Pourquoi nous</a>
+              <a href="#tarifs" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">Tarifs</a>
               <button 
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 className="text-sm bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-4 py-2 rounded-full hover:from-emerald-600 hover:to-teal-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
@@ -129,71 +130,138 @@ export default function LandingPage() {
         </div>
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-red-50 text-red-700 border border-red-200 mb-8 hover:bg-red-100 transition-colors cursor-pointer">
-            <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-            </svg>
-            🔥 Plus que 37 places pour la bêta fermée • 14 jours gratuits
-          </div>
+          {/* Badge */}              <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-red-50 text-red-700 border border-red-200 mb-8 hover:bg-red-100 transition-colors cursor-pointer">
+                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                </svg>
+                🔥 Plus que 13 places pour la bêta fermée • Bêta ouvre fin juillet 2025
+              </div>
           
           {/* Main headline */}
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-8 leading-none tracking-tight">
-            Plans IA + Suivi patients +
+            Arrêtez d'utiliser 100 outils différents
             <span className="block bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent">
-              Facturation automatisée
+              et de perdre 15h/semaine
             </span>
           </h1>
           
           {/* Subtitle */}
           <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
-            Soyez parmi les premiers à découvrir NutriFlow. Rejoignez la liste et bénéficiez de 14 jours gratuits dès l'ouverture.
-            <span className="block mt-2 text-lg text-gray-500">Logiciel conçu par et pour les diététiciens indépendants en France.</span>
+            NutriFlow est un outil complet qui intègre une IA générant des plans personnalisés en 90 secondes.
+            <span className="block mt-2 text-lg text-gray-500">150+ diététiciens déjà inscrits sur la liste d'attente.</span>
           </p>
           
           {/* AI Capability Example */}
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 mb-8 max-w-3xl mx-auto border border-gray-200 shadow-sm">
             <div className="text-center">
-              <div className="text-sm text-gray-600 mb-2">L'IA NutriFlow peut traiter :</div>
+              <div className="text-sm text-gray-600 mb-2">Exemple de cas d'usage typique :</div>
               <div className="text-lg font-semibold text-gray-900 mb-2">
-                "Végétarien + Diabète + Intolérance gluten + 1600 kcal + 15€/jour"
+                "Femme 34 ans + Diabète type 2 + Intolérance gluten + 1600 kcal + Budget 12€/jour"
               </div>
-              <div className="text-sm text-blue-600 font-medium">
-                → Plan 7 jours avec courses optimisées en moins de 2 minutes
+              <div className="text-sm text-emerald-600 font-medium">
+                ✅ Plan nutritionnel complet généré en moins de 2 minutes
               </div>
             </div>
           </div>
 
-          {/* AI Generation Proof - Compact Screenshot */}
-          <div className="mb-12 max-w-4xl mx-auto">
-            <div className="text-center mb-4">
-              <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
-                ✨ Aperçu de l'interface
+          {/* Platform Screenshots Demo */}
+          <div className="mb-12 max-w-6xl mx-auto">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 mb-4">
+                🖥️ Découvrez la plateforme complète
               </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                Tout ce dont vous avez besoin en un seul endroit
+              </h3>
+              <p className="text-gray-600">
+                De la génération IA aux factures, explorez toutes les fonctionnalités
+              </p>
             </div>
-            <div 
-              className="relative bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden cursor-pointer hover:shadow-2xl transition-shadow duration-300 group"
-              onClick={() => setIsImageZoomed(true)}
-            >
-              <img 
-                src="/ai-generation-proof.jpg" 
-                alt="Interface NutriFlow - Génération automatique de plans nutritionnels personnalisés"
-                className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
-                style={{ maxHeight: '400px', objectFit: 'cover' }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
-              <div className="absolute bottom-4 left-4 right-4">
-                <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 border border-gray-200">
-                  <div className="text-sm font-semibold text-gray-900 mb-1">Plan personnalisé généré</div>
-                  <div className="text-xs text-gray-600">Bodybuilder • 3500 kcal • 230g protéines • 7 jours</div>
+            
+            {/* Screenshots Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Dashboard Overview */}
+              <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
+                <img 
+                  src="/dashboard.png" 
+                  alt="Dashboard principal NutriFlow"
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h4 className="font-semibold text-sm mb-1">📊 Dashboard principal</h4>
+                  <p className="text-xs opacity-90">Vue d'ensemble de votre activité</p>
                 </div>
               </div>
-              {/* Click to zoom indicator */}
-              <div className="absolute top-4 right-4 bg-black/60 text-white px-2 py-1 rounded-lg text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <svg className="w-3 h-3 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                </svg>
-                Cliquer pour agrandir
+
+              {/* AI Generation */}
+              <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
+                <img 
+                  src="/generation-ia.png" 
+                  alt="Génération IA de plans nutritionnels"
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h4 className="font-semibold text-sm mb-1">🤖 Génération IA</h4>
+                  <p className="text-xs opacity-90">Plans personnalisés en 90 secondes</p>
+                </div>
+              </div>
+
+              {/* Plan Alimentaire */}
+              <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
+                <img 
+                  src="/dashboard-planalimentaire.png" 
+                  alt="Plans alimentaires générés"
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h4 className="font-semibold text-sm mb-1">🍽️ Plans alimentaires</h4>
+                  <p className="text-xs opacity-90">Gestion et modification des plans</p>
+                </div>
+              </div>
+
+              {/* Client Management */}
+              <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
+                <img 
+                  src="/dashboard-client.png" 
+                  alt="Gestion des clients"
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h4 className="font-semibold text-sm mb-1">👥 Gestion clients</h4>
+                  <p className="text-xs opacity-90">Suivi et communication</p>
+                </div>
+              </div>
+
+              {/* Appointments */}
+              <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
+                <img 
+                  src="/dashboard-rdv.png" 
+                  alt="Gestion des rendez-vous"
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h4 className="font-semibold text-sm mb-1">📅 Rendez-vous</h4>
+                  <p className="text-xs opacity-90">Calendrier et planification</p>
+                </div>
+              </div>
+
+              {/* Billing */}
+              <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
+                <img 
+                  src="/dashboard-factures.png" 
+                  alt="Facturation automatisée"
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h4 className="font-semibold text-sm mb-1">💰 Facturation</h4>
+                  <p className="text-xs opacity-90">Gestion financière simplifiée</p>
+                </div>
               </div>
             </div>
           </div>
@@ -216,7 +284,7 @@ export default function LandingPage() {
                 disabled={isSubmitting}
                 className="h-14 px-6 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-2xl font-semibold hover:from-emerald-600 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 whitespace-nowrap shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center min-w-fit"
               >
-                {isSubmitting ? 'En cours...' : 'Réserver ma place (37 restantes)'}
+                {isSubmitting ? 'En cours...' : 'Réserver ma place (13 restantes)'}
               </button>
             </form>
             
@@ -243,7 +311,7 @@ export default function LandingPage() {
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
               </svg>
-              <span className="text-sm font-medium">⚡ 113 inscrits cette semaine • Plus que 37 places bêta</span>
+              <span className="text-sm font-medium">⚡ 137 inscrits cette semaine • Plus que 13 places bêta</span>
             </div>
             
             {/* GDPR compliance badge */}
@@ -523,6 +591,76 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Founder Story Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-emerald-100 text-emerald-700 mb-8">
+              👨‍💻 Créé par un développeur passionné de nutrition
+            </div>
+            
+            <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-sm border border-gray-100">
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                {/* Profile Image */}
+                <div className="w-32 h-32 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center shadow-xl">
+                  <span className="text-white font-bold text-4xl">D</span>
+                </div>
+                
+                {/* Story Content */}
+                <div className="flex-1 text-left">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                    Pourquoi j'ai créé NutriFlow
+                  </h2>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    Je suis <strong>Danis</strong>, développeur full-stack passionné de sport et nutrition depuis 8 ans. 
+                    En observant les difficultés des diététiciens indépendants, j'ai décidé de créer une solution.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    Après avoir interrogé 150+ diététiciens, j'ai réalisé qu'ils perdaient tous <strong>15-20 heures par semaine</strong> 
+                    {' '}sur des tâches répétitives qui pourraient être automatisées. C'est exactement ce que fait NutriFlow.
+                  </p>
+                  <div className="flex items-center space-x-4 text-sm text-gray-500">
+                    <div className="flex items-center">
+                      <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                      Développeur full-stack
+                    </div>
+                    <div className="flex items-center">
+                      <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                      </svg>
+                      Passionné nutrition & sport
+                    </div>
+                    <div className="flex items-center">
+                      <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                      </svg>
+                      150+ diététiciens interrogés
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* LinkedIn Button */}
+            <div className="mt-6">
+              <a 
+                href="https://www.linkedin.com/in/danis-cindrak/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
+              >
+                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                Me suivre sur LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section id="features" className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -632,6 +770,12 @@ export default function LandingPage() {
                     </svg>
                     Rappels automatiques
                   </div>
+                  <div className="flex items-center text-gray-700">
+                    <svg className="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    Partage des plans nutritionnels
+                  </div>
                 </div>
               </div>
             </div>
@@ -690,94 +834,75 @@ export default function LandingPage() {
                   Pourquoi NutriFlow ?
                 </div>
                 <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                  Conçu par des diététiciens,
+                  Conçu avec les diététiciens,
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-600">
-                    pour des diététiciens
+                    pour les diététiciens
                   </span>
                 </h2>
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  Nous savons exactement quels sont vos défis quotidiens. C'est pourquoi 
-                  chaque fonctionnalité a été pensée pour vous faire gagner du temps et 
-                  améliorer l'expérience de vos clients.
+                <p className="text-xl text-gray-600 leading-relaxed mb-8">
+                  En tant que développeur passionné de nutrition, j'ai interrogé 150+ diététiciens pour comprendre 
+                  leurs défis quotidiens et créer une solution qui leur fait vraiment gagner du temps.
                 </p>
-              </div>
-              
-              {/* Benefits List */}
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Interface ultra-moderne</h3>
-                    <p className="text-gray-600">
-                      Finies les interfaces lentes et confuses. Notre plateforme charge instantanément 
-                      et s'adapte parfaitement à tous vos appareils.
-                    </p>
-                  </div>
+                
+                {/* Pain Points */}
+                <div className="bg-gray-50 rounded-xl p-6 mb-6">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-3">
+                    Ce que j'ai découvert en parlant avec 50+ diététiciens :
+                  </h4>
+                  <ul className="space-y-2 text-gray-600">
+                    <li className="flex items-start">
+                      <span className="text-red-500 mr-2">❌</span>
+                      <span>15-20h/semaine perdues sur des tâches répétitives</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-red-500 mr-2">❌</span>
+                      <span>Logiciels complexes et pas adaptés aux indépendants</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-red-500 mr-2">❌</span>
+                      <span>Clients qui abandonnent par manque de suivi</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-red-500 mr-2">❌</span>
+                      <span>Facturation et comptabilité fastidieuses</span>
+                    </li>
+                  </ul>
                 </div>
                 
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Développé avec vous</h3>
-                    <p className="text-gray-600">
-                      Chaque nouvelle fonctionnalité provient des suggestions de nos utilisateurs. 
-                      Vos besoins guident notre développement.
-                    </p>
-                  </div>
+                {/* Solution */}
+                <div className="bg-emerald-50 rounded-xl p-6 mb-6">
+                  <h4 className="text-lg font-semibold text-emerald-900 mb-3">
+                    Ce que je construis avec NutriFlow :
+                  </h4>
+                  <ul className="space-y-2 text-emerald-700">
+                    <li className="flex items-start">
+                      <span className="text-emerald-500 mr-2">✅</span>
+                      <span>IA qui génère des plans en 90 secondes</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-emerald-500 mr-2">✅</span>
+                      <span>Interface simple et moderne</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-emerald-500 mr-2">✅</span>
+                      <span>Portail client qui engage vos patients</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-emerald-500 mr-2">✅</span>
+                      <span>Facturation automatisée</span>
+                    </li>
+                  </ul>
                 </div>
                 
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Support français dédié</h3>
-                    <p className="text-gray-600">
-                      Une équipe française qui comprend vos spécificités professionnelles 
-                      et réglementaires. Réponse garantie sous 24h.
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Évolution continue</h3>
-                    <p className="text-gray-600">
-                      Nouvelles fonctionnalités chaque mois, mises à jour automatiques, 
-                      et amélirations constantes basées sur vos retours.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gray-900 mb-1">150+</div>
-                  <div className="text-sm text-gray-600">Inscrits en liste</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gray-900 mb-1">2min</div>
-                  <div className="text-sm text-gray-600">Configuration</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gray-900 mb-1">Sep</div>
-                  <div className="text-sm text-gray-600">Lancement 2025</div>
+                {/* Commitment */}
+                <div className="bg-blue-50 rounded-xl p-6">
+                  <h4 className="text-lg font-semibold text-blue-900 mb-2">
+                    Mon engagement transparent :
+                  </h4>
+                  <p className="text-blue-800 font-medium">
+                    "Je développe NutriFlow AVEC vous, en validant chaque étape. 
+                    Vous me faites confiance, je vous livre un produit qui fonctionne." - Danis
+                  </p>
                 </div>
               </div>
             </div>
@@ -847,662 +972,174 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Early Feedback Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-100 text-blue-700 mb-6">
-              📝 Retours terrain
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 leading-tight">
-              Ce que vous nous avez dit
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Extraits de notre enquête auprès de 150+ diététiciens indépendants. 
-              Vos besoins guident chaque fonctionnalité.
-            </p>
-          </div>
           
-          {/* Quote Cards */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {/* Quote 1 */}
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <div className="flex items-start space-x-3">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <blockquote className="text-gray-700 text-sm leading-relaxed">
-                    "J'ai besoin d'un outil flexible qui s'améliore progressivement avec les remontées des patients et du diététicien."
-                  </blockquote>
-                </div>
-              </div>
-              <div className="mt-4 text-xs text-gray-500 italic">
-                Réponse Google Form • Mars 2025
-              </div>
+          {/* Validation Stats */}
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            <div className="text-center bg-white rounded-2xl p-6 shadow-sm border border-emerald-100">
+              <div className="text-3xl font-bold text-emerald-600 mb-2">150+</div>
+              <div className="text-gray-600">Réponses à mon enquête</div>
             </div>
-
-            {/* Quote 2 */}
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <div className="flex items-start space-x-3">
-                <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <svg className="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <blockquote className="text-gray-700 text-sm leading-relaxed">
-                    "Ce qui me ferait gagner du temps : création des plans alimentaires, envoi PDF automatique, et création de factures."
-                  </blockquote>
-                </div>
-              </div>
-              <div className="mt-4 text-xs text-gray-500 italic">
-                Réponse Google Form • Avril 2025
-              </div>
+            <div className="text-center bg-white rounded-2xl p-6 shadow-sm border border-emerald-100">
+              <div className="text-3xl font-bold text-emerald-600 mb-2">8 ans</div>
+              <div className="text-gray-600">D'expérience en développement</div>
             </div>
-
-            {/* Quote 3 */}
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <div className="flex items-start space-x-3">
-                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <svg className="w-4 h-4 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <blockquote className="text-gray-700 text-sm leading-relaxed">
-                    "Génération automatique de menus, menus types, espace client sécurisé, suivi psychologique... Ça me permettrait de ne plus perdre de temps."
-                  </blockquote>
-                </div>
-              </div>
-              <div className="mt-4 text-xs text-gray-500 italic">
-                Réponse Google Form • Mai 2025
-              </div>
-            </div>
-          </div>
-          
-          {/* Bottom CTA */}
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-6">
-              Vous aussi, partagez vos besoins pour façonner NutriFlow
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a
-                href="mailto:contact@nutri-flow.me?subject=Mes besoins de diététicien"
-                className="inline-flex items-center px-6 py-3 bg-white text-gray-900 border border-gray-300 rounded-2xl font-medium hover:bg-gray-50 transition-colors shadow-sm"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                Partager mes besoins
-              </a>
-              <span className="text-gray-400 text-sm">ou</span>
-              <button
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-2xl font-medium hover:from-emerald-600 hover:to-teal-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-              >
-                Rejoindre la liste
-              </button>
+            <div className="text-center bg-white rounded-2xl p-6 shadow-sm border border-emerald-100">
+              <div className="text-3xl font-bold text-emerald-600 mb-2">0€</div>
+              <div className="text-gray-600">Avant d'avoir votre validation</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
+      {/* Clear Pricing Section */}
+      <section id="tarifs" className="py-32 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-emerald-100 text-emerald-700 mb-6">
-              Témoignages clients
+            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-100 text-blue-700 mb-6">
+              💰 Tarification transparente
             </div>
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-              Ce que disent nos
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">
-                utilisateurs
+              Un prix juste pour votre
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-600">
+                réussite
               </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Plus de 150 diététiciens nous font confiance pour co-créer leur futur logiciel.
+              Pas de surprise, pas de frais cachés. Un seul abonnement, tous les outils inclus.
             </p>
           </div>
           
-          {/* Testimonials Grid */}
-          <div className="grid lg:grid-cols-3 gap-8 mb-16">
-            {/* Testimonial 1 */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-3xl border border-blue-100 hover:shadow-xl transition-all duration-300">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">C</span>
-                </div>
-                <div className="ml-4">
-                  <div className="font-semibold text-gray-900">Camille Roche</div>
-                  <div className="text-sm text-gray-600">Diététicienne, Lyon</div>
-                </div>
-                <div className="ml-auto flex text-yellow-400">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                </div>
-              </div>
-              <blockquote className="text-gray-700 leading-relaxed mb-4">
-                "Si NutriFlow tient ses promesses, ça va vraiment me faire gagner du temps sur les suivis. L'idée d'automatiser les plans tout en gardant le côté humain, c'est exactement ce qu'il me fallait."
-              </blockquote>
-              <div className="text-sm text-gray-500">
-                Inscrite sur la liste d'accès anticipé • Cabinet de 45 clients
-              </div>
-            </div>
-
-            {/* Testimonial 2 */}
-            <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-8 rounded-3xl border border-emerald-100 hover:shadow-xl transition-all duration-300">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">M</span>
-                </div>
-                <div className="ml-4">
-                  <div className="font-semibold text-gray-900">Marie Leblanc</div>
-                  <div className="text-sm text-gray-600">Diététicienne, Bordeaux</div>
-                </div>
-                <div className="ml-auto flex text-yellow-400">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                </div>
-              </div>
-              <blockquote className="text-gray-700 leading-relaxed mb-4">
-                "Si NutriFlow tient ses promesses, ça va vraiment m'aider au quotidien. J'ai hâte de pouvoir passer moins de temps sur l'administratif et plus avec mes patients."
-              </blockquote>
-              <div className="text-sm text-gray-500">
-                A participé aux premiers retours utilisateurs • Bordeaux
-              </div>
-            </div>
-
-            {/* Testimonial 3 */}
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl border border-purple-100 hover:shadow-xl transition-all duration-300">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">J</span>
-                </div>
-                <div className="ml-4">
-                  <div className="font-semibold text-gray-900">Julien Martinez</div>
-                  <div className="text-sm text-gray-600">Diététicien du sport, Nice</div>
-                </div>
-                <div className="ml-auto flex text-yellow-400">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                </div>
-              </div>
-              <blockquote className="text-gray-700 leading-relaxed mb-4">
-                "Après avoir vu la démo, j'ai hâte de tester l'intégration avec les applis de sport ! Mes athlètes pourraient enfin avoir une approche vraiment personnalisée en fonction de leur activité."
-              </blockquote>
-              <div className="text-sm text-gray-500">
-                Fait partie de notre comité de bêta-testeurs • Nice
-              </div>
-            </div>
-          </div>
-          
-          {/* Trust indicators */}
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="p-6">
-              <div className="text-4xl font-bold text-gray-900 mb-2">150+</div>
-              <div className="text-gray-600 font-medium mb-1">Diététiciens en liste</div>
-              <div className="text-sm text-gray-500">d'attente</div>
-            </div>
-            <div className="p-6">
-              <div className="text-4xl font-bold text-gray-900 mb-2">3 mois</div>
-              <div className="text-gray-600 font-medium mb-1">de développement</div>
-              <div className="text-sm text-gray-500">avec votre feedback</div>
-            </div>
-            <div className="p-6">
-              <div className="text-4xl font-bold text-gray-900 mb-2">2min</div>
-              <div className="text-gray-600 font-medium mb-1">Temps de setup</div>
-              <div className="text-sm text-gray-500">configuration complète</div>
-            </div>
-          </div>
-          
-          {/* Security & Compliance badges */}
-          <div className="mt-16 pt-12 border-t border-gray-200">
-            <div className="text-center mb-8">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Sécurité & Conformité</h3>
-              <p className="text-gray-600">Respect des normes françaises et européennes</p>
-            </div>
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-70">
-              <div className="flex items-center space-x-2 px-4 py-2 bg-gray-50 rounded-lg">
-                <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">🔒</span>
-                </div>
-                <span className="text-sm font-medium text-gray-700">RGPD</span>
-              </div>
-              <div className="flex items-center space-x-2 px-4 py-2 bg-gray-50 rounded-lg">
-                <div className="w-6 h-6 bg-green-600 rounded flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">🏥</span>
-                </div>
-                <span className="text-sm font-medium text-gray-700">HDS</span>
-              </div>
-              <div className="flex items-center space-x-2 px-4 py-2 bg-gray-50 rounded-lg">
-                <div className="w-6 h-6 bg-purple-600 rounded flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">🇫🇷</span>
-                </div>
-                <span className="text-sm font-medium text-gray-700">Hébergé en France</span>
-              </div>
-              <div className="flex items-center space-x-2 px-4 py-2 bg-gray-50 rounded-lg">
-                <div className="w-6 h-6 bg-red-600 rounded flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">📋</span>
-                </div>
-                <span className="text-sm font-medium text-gray-700">CNIL</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Built With You Section */}
-      <section className="py-32 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-emerald-100 text-emerald-700 mb-6">
-              Développement collaboratif
-            </div>
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Vos idées deviennent
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">
-                nos fonctionnalités
-              </span>
-            </h2>
-          </div>
-          
-          {/* Main testimonial card */}
-          <div className="relative bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 sm:p-12 shadow-xl border border-gray-100 mb-16">
-            {/* Quote decoration */}
-            <div className="absolute top-6 left-6 w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
-              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" />
-              </svg>
-            </div>
-            
-            <div className="text-center">
-              {/* Avatar */}
-              <div className="relative mx-auto mb-6">
-                <div className="w-20 h-20 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg">
-                  <span className="text-3xl text-white">👨‍💻</span>
-                </div>
-                <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                </div>
+          {/* Pricing Card */}
+          <div className="max-w-lg mx-auto">
+            <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl p-8 border border-emerald-200 shadow-xl relative overflow-hidden">
+              {/* Popular badge */}
+              <div className="absolute top-0 right-0 bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-4 py-2 rounded-bl-2xl rounded-tr-3xl">
+                <span className="text-sm font-medium">🔥 Offre de lancement</span>
               </div>
               
-              {/* Quote */}
-              <blockquote className="text-xl sm:text-2xl font-medium text-gray-900 mb-6 leading-relaxed">
-                "Nous développons NutriFlow <span className="text-emerald-600 font-semibold">AVEC</span> vous, 
-                pas <span className="text-gray-500">POUR</span> vous. Chaque suggestion devient une priorité 
-                et est souvent intégrée en 2-3 semaines."
-              </blockquote>
-              
-              {/* Author */}
-              <div className="text-gray-600 mb-8">
-                <div className="font-semibold text-gray-900">Danis, Fondateur & Développeur</div>
-                <div className="text-sm">Développeur et sportif</div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Community-driven roadmap */}
-          <div className="text-center mb-8">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">
-              Conçu avec la communauté
-            </h3>
-            <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Chaque fonctionnalité découle de vraies conversations avec des diététiciens. 
-              Voici ce qui arrive en priorité grâce à vos retours.
-            </p>
-          </div>
-          
-          {/* Feature tags - horizontal scroll on mobile */}
-          <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-            <div className="inline-flex items-center space-x-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full border border-blue-100">
-              <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-              <span className="text-sm font-medium">Rappels automatiques</span>
-            </div>
-            
-            <div className="inline-flex items-center space-x-2 bg-emerald-50 text-emerald-700 px-4 py-2 rounded-full border border-emerald-100">
-              <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
-              <span className="text-sm font-medium">Export comptabilité</span>
-            </div>
-            
-            <div className="inline-flex items-center space-x-2 bg-purple-50 text-purple-700 px-4 py-2 rounded-full border border-purple-100">
-              <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-              <span className="text-sm font-medium">Intégration Doctolib</span>
-            </div>
-            
-            <div className="inline-flex items-center space-x-2 bg-orange-50 text-orange-700 px-4 py-2 rounded-full border border-orange-100">
-              <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
-              <span className="text-sm font-medium">Plans par lot</span>
-            </div>
-            
-            <div className="inline-flex items-center space-x-2 bg-teal-50 text-teal-700 px-4 py-2 rounded-full border border-teal-100">
-              <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-              <span className="text-sm font-medium">App mobile patients</span>
-            </div>
-            
-            <div className="inline-flex items-center space-x-2 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-full border border-indigo-100">
-              <div className="w-2 h-2 bg-indigo-400 rounded-full"></div>
-              <span className="text-sm font-medium">Suivi émotionnel</span>
-            </div>
-            
-            <div className="inline-flex items-center space-x-2 bg-rose-50 text-rose-700 px-4 py-2 rounded-full border border-rose-100">
-              <div className="w-2 h-2 bg-rose-400 rounded-full"></div>
-              <span className="text-sm font-medium">Téléconsultation</span>
-            </div>
-            
-            <div className="inline-flex items-center space-x-2 bg-amber-50 text-amber-700 px-4 py-2 rounded-full border border-amber-100">
-              <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-              <span className="text-sm font-medium">Analyses bio</span>
-            </div>
-          </div>
-          
-          {/* CTA */}
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-6">
-              Vous avez une idée ? Partagez-la avec nous !
-            </p>
-            <a 
-              href="mailto:contact@nutri-flow.me" 
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-2xl hover:from-emerald-600 hover:to-teal-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              Suggérer une fonctionnalité
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA Section */}
-      <section className="py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
-        {/* Background pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
-        
-        {/* Animated elements */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl animate-pulse animation-delay-2000"></div>
-        
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-red-500/20 text-red-200 border border-red-400/30 mb-8 backdrop-blur-sm">
-            <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-            </svg>
-            🔥 Seulement 37 places restantes pour la bêta
-          </div>
-          
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Rejoignez la liste d'accès
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-              anticipé
-            </span>
-          </h2>
-          
-          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Soyez averti en premier et bénéficiez de 2 semaines gratuites dès l'ouverture. 
-            Votre accès prioritaire vous attend.
-          </p>
-          
-          {/* CTA Button - Scroll to Top */}
-          <div className="mb-12">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="h-14 px-8 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-2xl font-semibold hover:from-emerald-600 hover:to-teal-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              ⬆️ Réserver mon accès gratuit
-            </button>
-          </div>
-          
-          {/* Pricing & Timeline Preview */}
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 mb-12 max-w-3xl mx-auto border border-white/10">
-            <div className="grid md:grid-cols-2 gap-6 text-left">
-              <div>
-                <h3 className="text-lg font-semibold text-white mb-3">📅 Timeline de lancement</h3>
-                <ul className="space-y-2 text-sm text-gray-300">
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-green-400 rounded-full mr-3"></span>
-                    <span><strong>Aujourd'hui :</strong> Liste d'attente ouverte</span>
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                    <span><strong>Aout 2025 :</strong> Bêta fermée (premiers 50)</span>
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                    <span><strong>Septembre 2025 :</strong> Lancement public</span>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-white mb-3">💰 Tarification</h3>
-                <div className="space-y-2 text-sm text-gray-300">
-                  <p><strong>Après les 14 jours gratuits :</strong></p>
-                  <p className="ml-3 text-lg text-green-400">• <strong>À partir de 29€/mois</strong></p>
-                  <p className="text-xs text-gray-400 mt-2">Prix définitif co-construit avec vous</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Trust indicators */}
-          <div className="grid sm:grid-cols-3 gap-8 text-sm">
-            <div className="flex flex-col items-center space-y-2">
-              <div className="w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center">
-                <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <span className="text-gray-300 font-medium">Accès anticipé gratuit</span>
-              <span className="text-gray-500 text-xs">14 jours dès l'ouverture</span>
-            </div>
-            
-            <div className="flex flex-col items-center space-y-2">
-              <div className="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center">
-                <span className="text-blue-400 text-lg font-bold">🇫🇷</span>
-              </div>
-              <span className="text-gray-300 font-medium">Données sécurisées</span>
-              <span className="text-gray-500 text-xs">Hébergées en France • RGPD</span>
-            </div>
-            
-            <div className="flex flex-col items-center space-y-2">
-              <div className="w-12 h-12 bg-purple-500/20 rounded-2xl flex items-center justify-center">
-                <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.5a9.5 9.5 0 110 19 9.5 9.5 0 010-19z" />
-                </svg>
-              </div>
-              <span className="text-gray-300 font-medium">Support français 24h</span>
-              <span className="text-gray-500 text-xs">Réponse garantie</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Founder Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-100 text-blue-700 mb-6">
-              Qui sommes-nous ?
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Créé par un passionné de nutrition et sport, 
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-600">
-                qui comprend vos nécessités
-              </span>
-            </h2>
-          </div>
-          
-          <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-8 lg:p-12 rounded-3xl border border-emerald-100">
-            <div className="flex flex-col lg:flex-row items-center gap-8">
-              <div className="flex-shrink-0">
-                <div className="w-32 h-32 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center text-white text-4xl font-bold shadow-lg">
-                  D
-                </div>
-              </div>
-              <div className="flex-1 text-center lg:text-left">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Danis</h3>
-                <p className="text-emerald-600 font-medium mb-4">Développeur & Sportif</p>
-                <p className="text-gray-600 leading-relaxed mb-6">
-                    Je suis simplement passionné de nutrition et sportif. NutriFlow est né de l'envie de créer un outil moderne, simple et utile pour les diététiciens indépendants.
+              <div className="text-center pt-4">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  NutriFlow Complet
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  Tout ce dont vous avez besoin pour développer votre cabinet
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                {/* <a
-                    href="https://www.linkedin.com/in/danis-cindrak/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 text-sm text-blue-600 hover:text-blue-700 transition-colors"
-                >
-                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                
+                {/* Pricing */}
+                <div className="mb-8">
+                  <div className="flex items-center justify-center mb-4">
+                    <span className="text-5xl font-bold text-gray-900">29€</span>
+                    <span className="text-xl text-gray-600 ml-2">/mois</span>
+                  </div>
+                  <div className="bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full text-sm font-medium inline-block">
+                    ✨ 3 premiers mois gratuits pour les 50 premiers
+                  </div>
+                </div>
+                
+                {/* Features */}
+                <div className="space-y-4 mb-8 text-left">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    LinkedIn
-                </a> */}
-                  {/* <span className="text-gray-400 hidden sm:block">•</span>
-                  <span className="text-sm text-gray-500">ADLF n° 12345678</span> */}
+                    </div>
+                    <div>
+                      <div className="font-medium text-gray-900">Plans IA illimités</div>
+                      <div className="text-sm text-gray-600">Générez autant de plans que vous voulez</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    </div>
+                    <div>
+                      <div className="font-medium text-gray-900">Clients illimités</div>
+                      <div className="text-sm text-gray-600">Portail client pour tous vos patients</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    </div>
+                    <div>
+                      <div className="font-medium text-gray-900">Facturation automatique</div>
+                      <div className="text-sm text-gray-600">Factures, paiements, export comptable</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-3">
+                    <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    </div>
+                    <div>
+                      <div className="font-medium text-gray-900">Support français 24h</div>
+                      <div className="text-sm text-gray-600">Réponse garantie sous 24h</div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* CTA */}
+                <button
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-4 px-6 rounded-2xl font-semibold hover:from-emerald-600 hover:to-teal-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg"
+                >
+                  Réserver ma place (13 restantes)
+                </button>
+                
+                {/* Guarantee */}
+                <div className="mt-6 text-center">
+                  <div className="text-sm text-gray-600">
+                    ✅ Annulation possible à tout moment<br />
+                    ✅ Remboursement intégral si pas satisfait<br />
+                    ✅ Vos données restent chez vous
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-32 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-100 text-blue-700 mb-6">
-              Questions fréquentes
-            </div>
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-              Vous avez des
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-600">
-                questions ?
-              </span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Voici les réponses aux questions les plus fréquemment posées par nos utilisateurs.
-            </p>
-          </div>
           
-          {/* FAQ Grid */}
-          <div className="space-y-8">
-            {/* FAQ 1 */}
-            <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Est-ce que mes données sont sécurisées ?
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Absolument. Toutes vos données sont hébergées en France, cryptées et sauvegardées quotidiennement. 
-                Nous respectons le RGPD et ne partageons jamais vos informations avec des tiers. Vos données client 
-                sont protégées par le secret médical.
-              </p>
+          {/* ROI Calculator */}
+          <div className="mt-16 bg-gray-50 rounded-3xl p-8 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+              📊 Calculez votre retour sur investissement
+            </h3>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-white rounded-xl p-6">
+                <h4 className="font-semibold text-gray-900 mb-3">❌ Sans NutriFlow</h4>
+                <div className="space-y-2 text-sm text-gray-600">
+                  <div>• 3h/plan × 10 plans/mois = 30h</div>
+                  <div>• 30h × 50€/h = <strong>1500€</strong> perdus</div>
+                  <div>• Stress + clients insatisfaits</div>
+                </div>
+              </div>
+              
+              <div className="bg-emerald-50 rounded-xl p-6">
+                <h4 className="font-semibold text-emerald-900 mb-3">✅ Avec NutriFlow</h4>
+                <div className="space-y-2 text-sm text-emerald-700">
+                  <div>• 90s/plan × 10 plans = 15 minutes</div>
+                  <div>• Économie: <strong>1471€/mois</strong></div>
+                  <div>• Clients plus engagés</div>
+                </div>
+              </div>
             </div>
-
-            {/* FAQ 2 */}
-            <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Puis-je arrêter à tout moment ?
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Bien sûr ! Aucun engagement. Vous pouvez annuler votre abonnement à tout moment depuis votre tableau de bord. 
-                Après l'annulation, vous gardez accès à vos données pendant 30 jours pour effectuer une sauvegarde si nécessaire.
-              </p>
-            </div>
-
-            {/* FAQ 3 */}
-            <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Quand le logiciel sera-t-il disponible ?
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Le lancement public est prévu pour septembre 2025. Les 50 premiers inscrits auront accès à la bêta fermée 
-                dès septembre. Nous prenons le temps nécessaire pour livrer un produit qui répond vraiment à vos besoins 
-                quotidiens.
-              </p>
-            </div>
-
-            {/* FAQ 4 */}
-            <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Quel sera le prix après les 14 jours gratuits ?
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                <strong>À partir de 29€/mois</strong> après votre essai gratuit de 14 jours. 
-                Prix définitif co-construit avec les premiers utilisateurs. Les membres de la liste d'attente bénéficient 
-                automatiquement du tarif préférentiel à vie.
-              </p>
-            </div>
-
-            {/* FAQ 5 */}
-            <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Faut-il une formation pour utiliser NutriFlow ?
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Non, NutriFlow est conçu pour être intuitif. La configuration prend 2 minutes et nous proposons 
-                un accompagnement personnalisé gratuit durant vos premiers pas. De plus, notre équipe support 
-                française est disponible pour vous aider à tout moment.
-              </p>
-            </div>
-          </div>
-
-          {/* CTA at the bottom of FAQ */}
-          <div className="text-center mt-16">
-            <p className="text-gray-600 mb-6">
-              Vous avez d'autres questions ? Notre équipe est là pour vous aider !
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a
-                href="mailto:contact@nutri-flow.me"
-                className="inline-flex items-center px-6 py-3 bg-white text-gray-900 border border-gray-300 rounded-2xl font-medium hover:bg-gray-50 transition-colors"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                Contactez-nous
-              </a>
+            
+            <div className="text-center mt-6">
+              <div className="text-2xl font-bold text-emerald-600">
+                ROI: 5,076% dès le premier mois
+              </div>
+              <div className="text-sm text-gray-600 mt-2">
+                Investissement: 29€ • Gain: 1,471€
+              </div>
             </div>
           </div>
         </div>
@@ -1543,7 +1180,6 @@ export default function LandingPage() {
               <ul className="space-y-3 text-sm text-gray-600">
                 <li><a href="#features" className="hover:text-gray-900 transition-colors">Fonctionnalités</a></li>
                 <li><a href="#why-us" className="hover:text-gray-900 transition-colors">Pourquoi nous</a></li>
-                <li><a href="#testimonials" className="hover:text-gray-900 transition-colors">Témoignages</a></li>
               </ul>
             </div>
             
