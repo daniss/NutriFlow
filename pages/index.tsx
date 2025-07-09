@@ -8,6 +8,7 @@ export default function LandingPage() {
   const [messageType, setMessageType] = useState<'success' | 'error'>('success');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isImageZoomed, setIsImageZoomed] = useState(false);
+  const [expandedImage, setExpandedImage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -164,110 +165,8 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Platform Screenshots Demo */}
-          <div className="mb-12 max-w-6xl mx-auto">
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 mb-4">
-                🖥️ Découvrez la plateforme complète
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                Tout ce dont vous avez besoin en un seul endroit
-              </h3>
-              <p className="text-gray-600">
-                De la génération IA aux factures, explorez toutes les fonctionnalités
-              </p>
-            </div>
-            
-            {/* Screenshots Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Dashboard Overview */}
-              <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
-                <img 
-                  src="/dashboard.png" 
-                  alt="Dashboard principal NutriFlow"
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h4 className="font-semibold text-sm mb-1">📊 Dashboard principal</h4>
-                  <p className="text-xs opacity-90">Vue d'ensemble de votre activité</p>
-                </div>
-              </div>
-
-              {/* AI Generation */}
-              <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
-                <img 
-                  src="/generation-ia.png" 
-                  alt="Génération IA de plans nutritionnels"
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h4 className="font-semibold text-sm mb-1">🤖 Génération IA</h4>
-                  <p className="text-xs opacity-90">Plans personnalisés en 90 secondes</p>
-                </div>
-              </div>
-
-              {/* Plan Alimentaire */}
-              <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
-                <img 
-                  src="/dashboard-planalimentaire.png" 
-                  alt="Plans alimentaires générés"
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h4 className="font-semibold text-sm mb-1">🍽️ Plans alimentaires</h4>
-                  <p className="text-xs opacity-90">Gestion et modification des plans</p>
-                </div>
-              </div>
-
-              {/* Client Management */}
-              <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
-                <img 
-                  src="/dashboard-client.png" 
-                  alt="Gestion des clients"
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h4 className="font-semibold text-sm mb-1">👥 Gestion clients</h4>
-                  <p className="text-xs opacity-90">Suivi et communication</p>
-                </div>
-              </div>
-
-              {/* Appointments */}
-              <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
-                <img 
-                  src="/dashboard-rdv.png" 
-                  alt="Gestion des rendez-vous"
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h4 className="font-semibold text-sm mb-1">📅 Rendez-vous</h4>
-                  <p className="text-xs opacity-90">Calendrier et planification</p>
-                </div>
-              </div>
-
-              {/* Billing */}
-              <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
-                <img 
-                  src="/dashboard-factures.png" 
-                  alt="Facturation automatisée"
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h4 className="font-semibold text-sm mb-1">💰 Facturation</h4>
-                  <p className="text-xs opacity-90">Gestion financière simplifiée</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
           {/* CTA Form */}
-          <div id="main-signup-form" className="max-w-2xl mx-auto mb-8">
+          <div id="main-signup-form" className="max-w-2xl mx-auto mb-12">
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 items-stretch">
               <div className="flex-1 min-w-0">
                 <input
@@ -305,7 +204,7 @@ export default function LandingPage() {
           </div>
           
           {/* Trust elements & Social proof */}
-          <div className="flex flex-col items-center space-y-4 mb-8">
+          <div className="flex flex-col items-center space-y-4 mb-16">
             {/* Urgency badge */}
             <div className="flex items-center justify-center space-x-2 px-4 py-2 bg-orange-50 text-orange-700 rounded-full border border-orange-200">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -319,27 +218,147 @@ export default function LandingPage() {
               <span className="font-semibold">🇫🇷</span>
               <span>Données sécurisées et hébergées en France</span>
             </div>
+            
+            {/* Additional Social proof */}
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-8 text-sm text-gray-500">
+              <div className="flex items-center space-x-2">
+                <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span>Accès prioritaire garanti</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span>14 jours gratuits dès l'ouverture</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span>Support français inclus</span>
+              </div>
+            </div>
           </div>
-          
-          {/* Additional Social proof */}
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-8 text-sm text-gray-500">
-            <div className="flex items-center space-x-2">
-              <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-              </svg>
-              <span>Accès prioritaire garanti</span>
+
+          {/* Platform Screenshots Demo */}
+          <div className="mb-12 max-w-6xl mx-auto">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 mb-4">
+                🖥️ Découvrez la plateforme complète
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                Tout ce dont vous avez besoin en un seul endroit
+              </h3>
+              <p className="text-gray-600">
+                De la génération IA aux factures, explorez toutes les fonctionnalités
+              </p>
             </div>
-            <div className="flex items-center space-x-2">
-              <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-              </svg>
-              <span>14 jours gratuits dès l'ouverture</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-              </svg>
-              <span>Support français inclus</span>
+            
+            {/* Screenshots Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Dashboard Overview */}
+              <div 
+                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                onClick={() => setExpandedImage('/dashboard.png')}
+              >
+                <img 
+                  src="/dashboard.png" 
+                  alt="Dashboard principal NutriFlow"
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h4 className="font-semibold text-sm mb-1">📊 Dashboard principal</h4>
+                  <p className="text-xs opacity-90">Vue d'ensemble de votre activité</p>
+                </div>
+              </div>
+
+              {/* AI Generation */}
+              <div 
+                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                onClick={() => setExpandedImage('/generation-ia.png')}
+              >
+                <img 
+                  src="/generation-ia.png" 
+                  alt="Génération IA de plans nutritionnels"
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h4 className="font-semibold text-sm mb-1">🤖 Génération IA</h4>
+                  <p className="text-xs opacity-90">Plans personnalisés en 90 secondes</p>
+                </div>
+              </div>
+
+              {/* Plan Alimentaire */}
+              <div 
+                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                onClick={() => setExpandedImage('/dashboard-planalimentaire.png')}
+              >
+                <img 
+                  src="/dashboard-planalimentaire.png" 
+                  alt="Plans alimentaires générés"
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h4 className="font-semibold text-sm mb-1">🍽️ Plans alimentaires</h4>
+                  <p className="text-xs opacity-90">Gestion et modification des plans</p>
+                </div>
+              </div>
+
+              {/* Client Management */}
+              <div 
+                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                onClick={() => setExpandedImage('/dashboard-client.png')}
+              >
+                <img 
+                  src="/dashboard-client.png" 
+                  alt="Gestion des clients"
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h4 className="font-semibold text-sm mb-1">👥 Gestion clients</h4>
+                  <p className="text-xs opacity-90">Suivi et communication</p>
+                </div>
+              </div>
+
+              {/* Appointments */}
+              <div 
+                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                onClick={() => setExpandedImage('/dashboard-rdv.png')}
+              >
+                <img 
+                  src="/dashboard-rdv.png" 
+                  alt="Gestion des rendez-vous"
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h4 className="font-semibold text-sm mb-1">📅 Rendez-vous</h4>
+                  <p className="text-xs opacity-90">Calendrier et planification</p>
+                </div>
+              </div>
+
+              {/* Billing */}
+              <div 
+                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                onClick={() => setExpandedImage('/dashboard-factures.png')}
+              >
+                <img 
+                  src="/dashboard-factures.png" 
+                  alt="Facturation automatisée"
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <h4 className="font-semibold text-sm mb-1">💰 Facturation</h4>
+                  <p className="text-xs opacity-90">Gestion financière simplifiée</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1246,6 +1265,32 @@ export default function LandingPage() {
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 text-white px-4 py-2 rounded-lg text-sm">
               Cliquez à l'extérieur ou sur ✕ pour fermer
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Screenshot Expansion Modal */}
+      {expandedImage && (
+        <div 
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+          onClick={() => setExpandedImage(null)}
+        >
+          <div className="relative max-w-7xl max-h-full">
+            {/* Close button */}
+            <button
+              onClick={() => setExpandedImage(null)}
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors"
+            >
+              ✕
+            </button>
+            
+            {/* Expanded Image */}
+            <img
+              src={expandedImage}
+              alt="Screenshot de la plateforme NutriFlow"
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
           </div>
         </div>
       )}
