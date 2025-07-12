@@ -80,3 +80,92 @@ class SubscriberService:
             Total subscriber count
         """
         return db.query(Subscriber).count()
+
+    @staticmethod
+    def unsubscribe_email(db: Session, email: str) -> bool:
+        """
+        Unsubscribe an email address by marking it in unsubscribed list
+        
+        For production use, this could:
+        1. Add to unsubscribed_emails table
+        2. Mark subscriber as inactive
+        3. Store in external service like SendGrid suppressions
+        
+        For this demo, we'll store in a simple JSON file
+        
+        Args:
+            db: Database session
+            email: Email address to unsubscribe
+            
+        Returns:
+            True if successfully unsubscribed, False if email not found
+        """
+        import json
+        import os
+        from pathlib import Path
+        
+        try:
+            # Check if subscriber exists
+            subscriber = db.query(Subscriber).filter(Subscriber.email == email).first()
+            if not subscriber:
+                logger.warning(f"Unsubscribe attempt for non-existent email: {email}")
+                return False
+            
+            # Path to unsubscribed emails file
+            unsubscribed_file = Path("unsubscribed_emails.json")
+            
+            # Load existing unsubscribed emails
+            unsubscribed_emails = []
+            if unsubscribed_file.exists():
+                try:
+                    with open(unsubscribed_file, 'r') as f:
+                        unsubscribed_emails = json.load(f)
+                except json.JSONDecodeError:
+                    logger.warning("Invalid JSON in unsubscribed_emails.json, starting fresh")
+                    unsubscribed_emails = []
+            
+            # Add email to unsubscribed list if not already there
+            if email not in unsubscribed_emails:
+                unsubscribed_emails.append(email)
+                
+                # Save updated list
+                with open(unsubscribed_file, 'w') as f:
+                    json.dump(unsubscribed_emails, f, indent=2)
+                
+                logger.info(f"Email unsubscribed successfully: {email}")
+            else:
+                logger.info(f"Email already unsubscribed: {email}")
+            
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error unsubscribing email {email}: {str(e)}")
+            return False
+    
+    @staticmethod
+    def is_email_unsubscribed(email: str) -> bool:
+        """
+        Check if an email is in the unsubscribed list
+        
+        Args:
+            email: Email address to check
+            
+        Returns:
+            True if email is unsubscribed, False otherwise
+        """
+        import json
+        from pathlib import Path
+        
+        try:
+            unsubscribed_file = Path("unsubscribed_emails.json")
+            
+            if not unsubscribed_file.exists():
+                return False
+            
+            with open(unsubscribed_file, 'r') as f:
+                unsubscribed_emails = json.load(f)
+                return email in unsubscribed_emails
+                
+        except Exception as e:
+            logger.error(f"Error checking unsubscribed status for {email}: {str(e)}")
+            return False

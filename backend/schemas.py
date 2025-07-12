@@ -55,3 +55,29 @@ class SubscribeResponse(BaseModel):
 class ErrorResponse(BaseModel):
     """Schema for error responses"""
     detail: str
+
+class UnsubscribeRequest(BaseModel):
+    """Schema for unsubscribe request"""
+    email: EmailStr = Field(
+        ...,
+        description="Email address to unsubscribe",
+        min_length=5,
+        max_length=254,
+        example="user@example.com"
+    )
+    
+    @validator('email')
+    def validate_email_format(cls, v):
+        """Validate email format for unsubscribe"""
+        email_str = str(v).lower().strip()
+        
+        # Basic security validation
+        if '..' in email_str or email_str.startswith('.') or email_str.endswith('.'):
+            raise ValueError('Invalid email format')
+            
+        return email_str
+
+class UnsubscribeResponse(BaseModel):
+    """Schema for unsubscribe response"""
+    message: str
+    email: str

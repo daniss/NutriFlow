@@ -7,7 +7,7 @@ import time
 import uuid
 
 from database import get_db
-from schemas import SubscriberCreate, SubscribeResponse, ErrorResponse
+from schemas import SubscriberCreate, SubscribeResponse, ErrorResponse, UnsubscribeRequest, UnsubscribeResponse
 from services import SubscriberService
 from security import get_client_ip, validate_request_headers
 from config import settings
@@ -194,4 +194,98 @@ async def get_subscriber_count(
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Une erreur interne s'est produite."
+        )
+
+@router.post(
+    "/unsubscribe",
+    response_model=UnsubscribeResponse,
+    status_code=status.HTTP_200_OK,
+    responses={
+        400: {"model": ErrorResponse, "description": "Requête invalide"},
+        404: {"model": ErrorResponse, "description": "Email non trouvé"},
+        422: {"model": ErrorResponse, "description": "Données invalides"},
+        429: {"model": ErrorResponse, "description": "Trop de tentatives"},
+        500: {"model": ErrorResponse, "description": "Erreur serveur"},
+    }
+)
+async def unsubscribe(
+    unsubscribe_data: UnsubscribeRequest,
+    request: Request,
+    db: Session = Depends(get_db)
+):
+    """
+    Unsubscribe an email from the newsletter
+    
+    Security features:
+    - Rate limiting per IP
+    - Email validation
+    - Request tracking
+    - Secure unsubscribe storage
+    """
+    request_id = generate_request_id()
+    start_time = time.time()
+    client_ip = get_client_ip(request)
+    
+    # Add request ID to response headers
+    request.state.request_id = request_id
+    
+    try:
+        logger.info(f"[{request_id}] Unsubscribe request from {client_ip}")
+        logger.info(f"[{request_id}] Email: {unsubscribe_data.email}")
+        
+        # Validate request headers
+        if not validate_request_headers(request):
+            logger.warning(f"[{request_id}] Invalid headers from {client_ip}")
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Requête invalide." if settings.is_production else "En-têtes de requête invalides."
+            )
+        
+        # Enhanced email validation
+        if not validate_email_format(unsubscribe_data.email):
+            logger.warning(f"[{request_id}] Invalid email format from {client_ip}: {unsubscribe_data.email}")
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Format d'email invalide."
+            )
+        
+        # Check if email is already unsubscribed
+        if SubscriberService.is_email_unsubscribed(unsubscribe_data.email):
+            logger.info(f"[{request_id}] Email already unsubscribed: {unsubscribe_data.email}")
+            return UnsubscribeResponse(
+                message="Vous avez été désabonné(e) avec succès.",
+                email=unsubscribe_data.email
+            )
+        
+        # Attempt to unsubscribe
+        success = SubscriberService.unsubscribe_email(
+            db=db, 
+            email=unsubscribe_data.email
+        )
+        
+        if not success:
+            logger.warning(f"[{request_id}] Unsubscribe failed - email not found: {unsubscribe_data.email}")
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Cette adresse email n'est pas inscrite à nos communications."
+            )
+        
+        processing_time = round((time.time() - start_time) * 1000, 2)
+        logger.info(f"[{request_id}] Successful unsubscribe from {client_ip}: {unsubscribe_data.email} ({processing_time}ms)")
+        
+        return UnsubscribeResponse(
+            message="Vous avez été désabonné(e) avec succès.",
+            email=unsubscribe_data.email
+        )
+        
+    except HTTPException:
+        # Re-raise HTTP exceptions
+        raise
+    except Exception as e:
+        # Unexpected errors
+        processing_time = round((time.time() - start_time) * 1000, 2)
+        logger.error(f"[{request_id}] Unexpected error from {client_ip} ({processing_time}ms): {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Une erreur interne s'est produite. Veuillez réessayer plus tard."
         )
